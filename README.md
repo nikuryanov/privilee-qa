@@ -32,23 +32,36 @@ The repository contains:
 ```bash
 git clone <your-repo-url>
 cd privilee-qa
+```
 2. Create a virtual environment (optional but recommended):
+```bash
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate   # Windows
+```
 3. Install dependencies:
+```bash
 pip install --upgrade pip
 pip install -r requirements.txt
+```
 4. Install Playwright browsers:
+```bash
 playwright install
+```
 
 ## Running Tests
 1. Run all UI tests:
+```bash
 pytest tests/ui --maxfail=1 --disable-warnings --junitxml=ui-test-results.xml
+```
 2. Run all API tests:
+```bash
 pytest tests/api --maxfail=1 --disable-warnings --junitxml=api-test-results.xml
+```
 3. Run all tests together:
+```bash
 pytest tests --maxfail=1 --disable-warnings
+```
 
 Screenshots from UI tests will be saved in the tests/ui/ folder (e.g., map_center_click.png).
 
