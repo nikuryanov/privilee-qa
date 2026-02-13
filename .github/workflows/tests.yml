@@ -13,6 +13,9 @@ jobs:
       matrix:
         python-version: [3.11]
 
+    env:  # <- added here, applies to all steps in this job
+      GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -37,8 +40,6 @@ jobs:
       - name: Run API Tests
         run: |
           pytest tests/api --maxfail=1 --disable-warnings --junitxml=api-test-results.xml
-        env:
-          GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
         continue-on-error: false
 
       - name: Upload Test Artifacts
