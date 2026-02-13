@@ -33,7 +33,7 @@ privilee-qa/
 ```
 
 ## Requirements
-```markdown
+```text
 - The following Python packages (listed in `requirements.txt`):
   - pytest==9.0.2
   - playwright==1.39.1
@@ -78,10 +78,10 @@ pytest tests/api --maxfail=1 --disable-warnings --junitxml=api-test-results.xml
 pytest tests --maxfail=1 --disable-warnings
 ```
 
-Screenshots from UI tests will be saved in the tests/ui/ folder (e.g., map_center_click.png).
+ Screenshots from UI tests will be saved in the tests/ui/ folder (e.g., map_center_click.png).
 
 ## Test Scenarios
-UI Tests
+### UI Tests
 1. Map Container Visible
 - Feature: Mapbox canvas container
 - Expected Outcome: Canvas exists and has non-zero dimensions
@@ -112,7 +112,7 @@ UI Tests
 - Setup: Open Map page, move mouse to canvas center, perform wheel actions
 - Importance: Validates interactive functionality (Functionality/UI)
 
-API Tests  
+### API Tests  
 Endpoints:
 ```text
 /public/v2/users
