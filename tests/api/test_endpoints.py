@@ -5,6 +5,11 @@ BASE_URL = "https://gorest.co.in/public/v2"
 TOKEN = os.getenv("GOREST_TOKEN")
 HEADERS = {"Authorization": f"Bearer {TOKEN}"}
 
+# --- Token sanity check ---
+def test_token_present():
+    assert TOKEN, "GOREST_TOKEN is not set"
+    print(f"Token present: {TOKEN[:4]}****")  # only show first 4 chars
+    
 # List of endpoints to test
 ENDPOINTS = [
     "/users",
