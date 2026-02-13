@@ -5,7 +5,7 @@ MAP_URL = "https://staging-website.privilee.ae/map"
 def test_map_zoom_in_out():
     """Simulate zoom in/out via mouse wheel (Functionality / Interaction)."""
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(MAP_URL, wait_until="domcontentloaded")
         page.wait_for_timeout(5000)

@@ -5,7 +5,7 @@ MAP_URL = "https://staging-website.privilee.ae/map"
 def test_map_container_visible():
     """Check the Mapbox canvas container exists and is visible (UI)."""
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(MAP_URL, wait_until="networkidle")
         page.wait_for_timeout(5000)

@@ -8,7 +8,7 @@ MAP_URL = "https://staging-website.privilee.ae/map"
 def test_map_tiles_loaded():
     """Check the map canvas has non-empty pixels (Performance / Data Accuracy)."""
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(MAP_URL, wait_until="domcontentloaded")
 
