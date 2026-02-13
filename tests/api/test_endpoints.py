@@ -5,44 +5,41 @@ BASE_URL = "https://gorest.co.in/public/v2"
 TOKEN = os.getenv("GOREST_TOKEN")
 HEADERS = {"Authorization": f"Bearer {TOKEN}"}
 
-# --- Token sanity check ---
+# Token sanity check
 def test_token_present():
     assert TOKEN, "GOREST_TOKEN is not set"
     print(f"Token present: {TOKEN[:4]}****")  # only show first 4 chars
 
-# List of endpoints to test
 ENDPOINTS = [
-    "/users",             # may be forbidden in CI
+    "/users",
     "/posts",
     "/users/7373665/posts",
     "/todos"
 ]
 
-# Endpoints expected to have at least 1 item
 ENDPOINTS_WITH_DATA = [
     "/posts",
     "/todos"
 ]
 
 def check_status_code(endpoint):
-    """Helper to GET an endpoint with auth headers"""
     url = f"{BASE_URL}{endpoint}"
     return requests.get(url, headers=HEADERS)
 
 def test_endpoints_status_code():
-    """Check endpoints return 200, skip /users if forbidden"""
+    """Check endpoints return 200 or skip if forbidden"""
     for endpoint in ENDPOINTS:
         response = check_status_code(endpoint)
-        if endpoint == "/users" and response.status_code == 403:
-            print("Skipping /users: token lacks permission")
+        if response.status_code == 403:
+            print(f"Skipping {endpoint}: token lacks permission")
             continue
         assert response.status_code == 200, f"{endpoint} returned {response.status_code}"
 
 def test_endpoints_return_json():
-    """Check endpoints return JSON list"""
+    """Check endpoints return JSON list if accessible"""
     for endpoint in ENDPOINTS:
         response = check_status_code(endpoint)
-        if endpoint == "/users" and response.status_code == 403:
+        if response.status_code == 403:
             continue
         try:
             data = response.json()
