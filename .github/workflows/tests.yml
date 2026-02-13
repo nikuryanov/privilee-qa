@@ -13,15 +13,9 @@ jobs:
       matrix:
         python-version: [3.11]
 
-    env:  # this applies GOREST_TOKEN to all steps
-      GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-
-      - name: Debug token
-        run: echo "Token first 4 chars: ${GOREST_TOKEN:0:4}"
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -40,9 +34,16 @@ jobs:
           pytest tests/ui --maxfail=1 --disable-warnings --junitxml=ui-test-results.xml
         continue-on-error: false
 
+      - name: Debug token
+        run: echo "Token first 4 chars: ${GOREST_TOKEN:0:4}"
+        env:
+          GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
+
       - name: Run API Tests
         run: |
           pytest tests/api --maxfail=1 --disable-warnings --junitxml=api-test-results.xml
+        env:
+          GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
         continue-on-error: false
 
       - name: Upload Test Artifacts
