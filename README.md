@@ -122,7 +122,7 @@ Endpoints:
 /public/v2/users/7373665/posts
 /public/v2/todos
 ```
-### Notes on Token & Permissions
+**Notes on Token & Permissions**
 
 - The tests require a valid API token stored as an environment variable:
 ```bash
