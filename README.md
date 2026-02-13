@@ -29,6 +29,7 @@ The repository contains:
 
 ## Setup
 1. Clone the repository:
+```bash
 git clone <your-repo-url>
 cd privilee-qa
 2. Create a virtual environment (optional but recommended):
