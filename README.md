@@ -19,13 +19,12 @@ The repository contains:
 - CI workflow to run tests automatically on GitHub Actions and generate test reports.
 
 ## Requirements
-- Python 3.14+
 - The following Python packages (listed in `requirements.txt`):
-- pytest==9.0.2
-- playwright==1.39.1
-- requests==2.32.0
-- Pillow==10.0.0
-- pytest-xdist==3.2.2
+  - pytest==9.0.2
+  - playwright==1.39.1
+  - requests==2.32.0
+  - Pillow==10.0.0
+  - pytest-xdist==3.2.2
 
 ## Setup
 1. Clone the repository:
@@ -97,17 +96,31 @@ UI Tests
 - Setup: Open Map page, move mouse to canvas center, perform wheel actions
 - Importance: Validates interactive functionality (Functionality/UI)
 
-API Tests
+API Tests  
 Endpoints:
+```text
 /public/v2/users
 /public/v2/posts
 /public/v2/users/7373665/posts
 /public/v2/todos
+```
 
 Validation: Response status, data format, and content correctness
 Importance: Verifies API reliability and data integrity
 
 ## GitHub Actions Workflow
+
+```markdown
+privilee-qa/
+├─ README.md
+├─ requirements.txt
+├─ tests/
+│  ├─ ui/        # UI automation tests
+│  └─ api/       # API tests
+└─ .github/
+   └─ workflows/
+      └─ tests.yml  # GitHub Actions workflow
+```
 - Workflow file: .github/workflows/tests.yml
 - Automatically runs tests on push or pull request to main
 - Generates JUnit XML reports for UI and API tests
