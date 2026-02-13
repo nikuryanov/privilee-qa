@@ -29,11 +29,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          # Install Playwright browsers if needed
           playwright install
 
       - name: Debug token
-        run: echo "Token first 4 chars: ${GOREST_TOKEN:0:4}"
+        run: |
+          echo "Token first 4 chars: ${GOREST_TOKEN:0:4}"
 
       - name: Run UI Tests
         run: |
