@@ -21,14 +21,14 @@ The repository contains:
 
 ## Repository Structure
 privilee-qa/
-├─ README.md
-├─ requirements.txt
-├─ tests/
-│   ├─ ui/         (UI automation tests)
-│   └─ api/        (API tests)
+├─ README.md                  # This file
+├─ requirements.txt           # Python dependencies
+├─ tests/                     # All automated tests
+│  ├─ ui/                     # UI automation tests (Playwright)
+│  └─ api/                    # API tests (requests)
 └─ .github/
-└─ workflows/
-└─ tests.yml  (GitHub Actions workflow)
+   └─ workflows/
+      └─ tests.yml            # GitHub Actions workflow for running tests
 
 ## Requirements
 - Python 3.14+
