@@ -1,1 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="12" time="10.070" timestamp="2026-02-13T15:41:19.651067+03:00" hostname="MacBook-Air-Carina.local"><testcase classname="tests.api.test_posts" name="test_get_posts_status_code" time="1.291" /><testcase classname="tests.api.test_posts" name="test_get_posts_returns_list" time="0.707" /><testcase classname="tests.api.test_posts" name="test_get_posts_required_fields" time="1.235" /><testcase classname="tests.api.test_todos" name="test_get_todos_status_code" time="1.216" /><testcase classname="tests.api.test_todos" name="test_get_todos_returns_list" time="1.330" /><testcase classname="tests.api.test_todos" name="test_get_todos_required_fields" time="0.593" /><testcase classname="tests.api.test_user_posts" name="test_get_user_posts_status_code" time="0.633" /><testcase classname="tests.api.test_user_posts" name="test_get_user_posts_returns_list" time="0.614" /><testcase classname="tests.api.test_user_posts" name="test_get_user_posts_required_fields" time="0.613" /><testcase classname="tests.api.test_users" name="test_get_users_status_code" time="0.612" /><testcase classname="tests.api.test_users" name="test_get_users_returns_list" time="0.567" /><testcase classname="tests.api.test_users" name="test_get_users_required_fields" time="0.581" /></testsuite></testsuites>
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="8.276" timestamp="2026-02-13T16:16:21.810709+03:00" hostname="MacBook-Air-Carina.local"><testcase classname="tests.api.test_endpoints" name="test_token_is_valid" time="1.347" /><testcase classname="tests.api.test_endpoints" name="test_endpoints_status_code" time="4.089" /><testcase classname="tests.api.test_endpoints" name="test_endpoints_return_json" time="2.762"><failure message="AssertionError: /users/7373665/posts returned empty list&#10;assert 0 &gt; 0&#10; +  where 0 = len([])">def test_endpoints_return_json():
+        """Check all endpoints return JSON list"""
+        for endpoint in ENDPOINTS:
+            response = check_status_code(endpoint)
+            try:
+                data = response.json()
+            except Exception:
+                assert False, f"{endpoint} did not return valid JSON"
+            assert isinstance(data, list), f"{endpoint} returned non-list data"
+&gt;           assert len(data) &gt; 0, f"{endpoint} returned empty list"
+E           AssertionError: /users/7373665/posts returned empty list
+E           assert 0 &gt; 0
+E            +  where 0 = len([])
+
+tests/api/test_endpoints.py:41: AssertionError</failure></testcase></testsuite></testsuites>

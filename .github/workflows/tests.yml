@@ -13,9 +13,6 @@ jobs:
       matrix:
         python-version: [3.11]
 
-    env:  # Apply GOREST_TOKEN to all steps in this job
-      GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}
-
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
@@ -29,7 +26,6 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          # Install Playwright browsers
           playwright install
 
       - name: Run UI Tests
@@ -38,8 +34,10 @@ jobs:
         continue-on-error: false
 
       - name: Run API Tests
+        env:
+          GOREST_TOKEN: ${{ secrets.GOREST_TOKEN }}  # <- ensure you added the secret in GitHub
         run: |
-          pytest tests/api/test_endpoints.py --maxfail=1 --disable-warnings --junitxml=api-test-results.xml
+          pytest tests/api --maxfail=1 --disable-warnings --junitxml=api-test-results.xml
         continue-on-error: false
 
       - name: Upload Test Artifacts
