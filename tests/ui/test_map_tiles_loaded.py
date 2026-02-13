@@ -20,10 +20,15 @@ def test_map_tiles_loaded():
         while time.time() - start_time < timeout:
             screenshot_bytes = canvas.screenshot()
             img = Image.open(io.BytesIO(screenshot_bytes))
-            pixels = img.get_flattened_data()
-            non_empty = any(pixel != 0 for pixel in pixels)
+            pixels = list(img.getdata())
+            if img.mode in ("RGB", "RGBA"):
+                non_empty = any(pixel[:3] != (255, 255, 255) for pixel in pixels)
+            else:
+                non_empty = any(pixel != 0 for pixel in pixels)
             if non_empty:
                 break
             page.wait_for_timeout(500)
 
         assert non_empty, f"Canvas appears empty after {timeout}s (performance issue?)"
+
+        browser.close()
