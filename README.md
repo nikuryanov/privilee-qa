@@ -33,12 +33,14 @@ privilee-qa/
 ```
 
 ## Requirements
+```markdown
 - The following Python packages (listed in `requirements.txt`):
   - pytest==9.0.2
   - playwright==1.39.1
   - requests==2.32.0
   - Pillow==10.0.0
   - pytest-xdist==3.2.2
+```
 
 ## Setup
 1. Clone the repository:
@@ -118,7 +120,9 @@ Endpoints:
 /public/v2/users/7373665/posts
 /public/v2/todos
 ```
+
 Validation: Response status, data format, and content correctness
+
 Importance: Verifies API reliability and data integrity
 
 ## GitHub Actions Workflow
