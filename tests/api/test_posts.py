@@ -7,6 +7,7 @@ API_TOKEN = os.getenv("GOREST_TOKEN")
 
 HEADERS = {
     "Authorization": f"Bearer {API_TOKEN}"
+}
     
 def test_get_posts_status_code():
     response = requests.get(f"{BASE_URL}/posts", headers=HEADERS)
