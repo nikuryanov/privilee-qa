@@ -36,10 +36,10 @@ privilee-qa/
 ```text
 - The following Python packages (listed in `requirements.txt`):
   - pytest==9.0.2
-  - playwright==1.39.1
+  - playwright
   - requests==2.32.0
   - Pillow==10.0.0
-  - pytest-xdist==3.2.2
+  - pytest-xdist
 ```
 
 ## Setup
