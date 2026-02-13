@@ -20,7 +20,7 @@ The repository contains:
 - CI workflow to run tests automatically on GitHub Actions and generate test reports.
 
 ## Repository Structure
-```markdown
+```text
 privilee-qa/
 ├─ README.md
 ├─ requirements.txt
