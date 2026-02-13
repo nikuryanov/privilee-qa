@@ -78,7 +78,7 @@ pytest tests/api --maxfail=1 --disable-warnings --junitxml=api-test-results.xml
 pytest tests --maxfail=1 --disable-warnings
 ```
 
- Screenshots from UI tests will be saved in the tests/ui/ folder (e.g., map_center_click.png).
+Screenshots from UI tests will be saved in the `tests/ui/` folder (e.g., `map_center_click.png`).
 
 ## Test Scenarios
 ### UI Tests
@@ -112,7 +112,9 @@ pytest tests --maxfail=1 --disable-warnings
 - Setup: Open Map page, move mouse to canvas center, perform wheel actions
 - Importance: Validates interactive functionality (Functionality/UI)
 
-### API Tests  
+### API Tests
+**Note:** The following endpoints are public and will be validated in the automated tests:
+
 Endpoints:
 ```text
 /public/v2/users
