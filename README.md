@@ -4,6 +4,7 @@ This repository contains automated tests for the Privilee website and API, creat
 
 ## Table of Contents
 - [Overview](#overview)
+- [Repository Structure](#repository-structure)
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Running Tests](#running-tests)
@@ -17,6 +18,19 @@ The repository contains:
 - UI tests covering functionality, user interface, performance, and data accuracy.
 - API tests validating different endpoints.
 - CI workflow to run tests automatically on GitHub Actions and generate test reports.
+
+## Repository Structure
+```markdown
+privilee-qa/
+├─ README.md
+├─ requirements.txt
+├─ tests/
+│  ├─ ui/        # UI automation tests
+│  └─ api/       # API tests
+└─ .github/
+   └─ workflows/
+      └─ tests.yml  # GitHub Actions workflow
+```
 
 ## Requirements
 - The following Python packages (listed in `requirements.txt`):
@@ -104,23 +118,10 @@ Endpoints:
 /public/v2/users/7373665/posts
 /public/v2/todos
 ```
-
 Validation: Response status, data format, and content correctness
 Importance: Verifies API reliability and data integrity
 
 ## GitHub Actions Workflow
-
-```markdown
-privilee-qa/
-├─ README.md
-├─ requirements.txt
-├─ tests/
-│  ├─ ui/        # UI automation tests
-│  └─ api/       # API tests
-└─ .github/
-   └─ workflows/
-      └─ tests.yml  # GitHub Actions workflow
-```
 - Workflow file: .github/workflows/tests.yml
 - Automatically runs tests on push or pull request to main
 - Generates JUnit XML reports for UI and API tests
