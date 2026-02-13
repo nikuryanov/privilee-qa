@@ -10,14 +10,17 @@ def test_token_present():
     assert TOKEN, "GOREST_TOKEN is not set"
     print(f"Token present: {TOKEN[:4]}****")  # only show first 4 chars
 
+# Endpoints to test
 ENDPOINTS = [
-    "/users",                # may return 403 if token lacks permission
+    "/users",
     "/posts",
     "/users/7373665/posts",
     "/todos"
 ]
 
+# Endpoints expected to always have data
 ENDPOINTS_WITH_DATA = [
+    "/users",
     "/posts",
     "/todos"
 ]
@@ -29,24 +32,17 @@ def check_status_code(endpoint):
 def test_endpoints_status_code():
     """
     Check that all endpoints return HTTP 200.
-    /users may return 403 if the token lacks permission, in which case we skip it.
     """
     for endpoint in ENDPOINTS:
         response = check_status_code(endpoint)
-        if response.status_code == 403:
-            print(f"Skipping {endpoint}: token lacks permission")
-            continue
         assert response.status_code == 200, f"{endpoint} returned {response.status_code}"
 
 def test_endpoints_return_json():
     """
-    Check that all accessible endpoints return JSON arrays.
-    /users will be skipped if forbidden (403).
+    Check that all endpoints return JSON arrays.
     """
     for endpoint in ENDPOINTS:
         response = check_status_code(endpoint)
-        if response.status_code == 403:
-            continue
         try:
             data = response.json()
         except Exception:
