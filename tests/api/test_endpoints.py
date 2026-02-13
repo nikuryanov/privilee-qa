@@ -11,7 +11,7 @@ def test_token_present():
     print(f"Token present: {TOKEN[:4]}****")  # only show first 4 chars
 
 ENDPOINTS = [
-    "/users",
+    "/users",                # may return 403 if token lacks permission
     "/posts",
     "/users/7373665/posts",
     "/todos"
@@ -27,16 +27,22 @@ def check_status_code(endpoint):
     return requests.get(url, headers=HEADERS)
 
 def test_endpoints_status_code():
-    """Check endpoints return 200 or skip if forbidden"""
+    """
+    Check that all endpoints return HTTP 200.
+    /users may return 403 if the token lacks permission, in which case we skip it.
+    """
     for endpoint in ENDPOINTS:
         response = check_status_code(endpoint)
         if response.status_code == 403:
-            print(f"Skipping {endpoint}: token lacks permission")
+            print("Skipping /users: token lacks permission")
             continue
         assert response.status_code == 200, f"{endpoint} returned {response.status_code}"
 
 def test_endpoints_return_json():
-    """Check endpoints return JSON list if accessible"""
+    """
+    Check that all accessible endpoints return JSON arrays.
+    /users will be skipped if forbidden (403).
+    """
     for endpoint in ENDPOINTS:
         response = check_status_code(endpoint)
         if response.status_code == 403:

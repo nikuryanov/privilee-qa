@@ -122,6 +122,17 @@ Endpoints:
 /public/v2/users/7373665/posts
 /public/v2/todos
 ```
+```markdown
+### Notes on Token & Permissions
+
+- The tests require a valid API token stored as an environment variable:
+```
+```bash
+export GOREST_TOKEN="your_token_here"
+```
+- The /users endpoint may return HTTP 403 if the token does not have permission to access users.
+In this case, the test for /users will be skipped, but other endpoints will still be tested.
+- Endpoints like /posts and /todos are expected to always return data; tests will fail if they return empty lists.
 
 Validation: Response status, data format, and content correctness
 
