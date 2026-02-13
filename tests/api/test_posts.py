@@ -3,7 +3,7 @@ import requests
 
 BASE_URL = "https://gorest.co.in/public/v2"
 
-# Use environment variable for token
+# Read token from environment
 API_TOKEN = os.getenv("GOREST_TOKEN")
 HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
 
