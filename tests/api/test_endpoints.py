@@ -34,7 +34,7 @@ def test_endpoints_status_code():
     for endpoint in ENDPOINTS:
         response = check_status_code(endpoint)
         if response.status_code == 403:
-            print("Skipping /users: token lacks permission")
+            print(f"Skipping {endpoint}: token lacks permission")
             continue
         assert response.status_code == 200, f"{endpoint} returned {response.status_code}"
 

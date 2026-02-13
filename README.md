@@ -128,13 +128,12 @@ Endpoints:
 ```bash
 export GOREST_TOKEN="your_token_here"
 ```
-- The /users endpoint may return HTTP 403 if the token does not have permission to access users.
-In this case, the test for /users will be skipped, but other endpoints will still be tested.
+- The /users endpoint may return HTTP 403 if the token does not have permission. In this case, the /users test will be skipped, but all other endpoints will still run.
 - Endpoints like /posts and /todos are expected to always return data; tests will fail if they return empty lists.
 
-Validation: Response status, data format, and content correctness
+Validation: Response status, JSON format, and data presence.
 
-Importance: Verifies API reliability and data integrity
+Importance: Verifies API reliability and data integrity.
 
 ## GitHub Actions Workflow
 - Workflow file: .github/workflows/tests.yml
