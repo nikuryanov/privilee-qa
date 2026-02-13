@@ -4,7 +4,6 @@ This repository contains automated tests for the Privilee website and API, creat
 
 ## Table of Contents
 - [Overview](#overview)
-- [Repository Structure](#repository-structure)
 - [Requirements](#requirements)
 - [Setup](#setup)
 - [Running Tests](#running-tests)
@@ -18,17 +17,6 @@ The repository contains:
 - UI tests covering functionality, user interface, performance, and data accuracy.
 - API tests validating different endpoints.
 - CI workflow to run tests automatically on GitHub Actions and generate test reports.
-
-## Repository Structure
-privilee-qa/
-├─ README.md                  # This file
-├─ requirements.txt           # Python dependencies
-├─ tests/                     # All automated tests
-│  ├─ ui/                     # UI automation tests (Playwright)
-│  └─ api/                    # API tests (requests)
-└─ .github/
-   └─ workflows/
-      └─ tests.yml            # GitHub Actions workflow for running tests
 
 ## Requirements
 - Python 3.14+
