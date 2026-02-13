@@ -122,11 +122,9 @@ Endpoints:
 /public/v2/users/7373665/posts
 /public/v2/todos
 ```
-```markdown
 ### Notes on Token & Permissions
 
 - The tests require a valid API token stored as an environment variable:
-```
 ```bash
 export GOREST_TOKEN="your_token_here"
 ```
